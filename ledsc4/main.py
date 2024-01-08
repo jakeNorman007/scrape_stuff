@@ -19,9 +19,9 @@ leds_product_links = []
 products = driver.find_elements(By.XPATH, "//div[@class='product-description']/a")
 
 for link in products:
-  page = link.get_attribute('href')
-  leds_product_links.append(page)
-  leds_see_four["link_url"].append(page)
+    page = link.get_attribute('href')
+    leds_product_links.append(page)
+    leds_see_four["link_url"].append(page)
   
 for url in leds_product_links:
   driver.get(url)
@@ -41,4 +41,4 @@ for url in leds_product_links:
   leds_see_four["manufacturer_id"].append(manufacturer_id)
   
 led_data = pd.DataFrame(leds_see_four).to_csv('ledsC4_csv.csv', index=False)
-driver.close() 
+driver.close()

@@ -11,8 +11,7 @@ options.add_argument("--headless=new")
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
-goodlite = {"name": [], "description": [], "link_url": [], "image_url": [], "unique_id": [],
-            "manufacturer_id": []}
+goodlite = {"name": [], "description": [], "link_url": [], "image_url": [], "unique_id": [], "manufacturer_id": []}
 
 for i in range(1, 10):
     url = "https://gllite.com/"
