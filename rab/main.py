@@ -10,10 +10,9 @@ options.add_argument("--headless=new")
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
-rab = {"name": [], "link_url": [], "image_url": [], "manufacturer_id": []}
+rab = {"name": [], "description": [], "link_url": [], "image_url": [], "manufacturer_id": []}
 
 rab_url_bank = ("indoor", "residential", "outdoor", "lamps", "controls", "electric-vehicle-chargers")
-
 rab_bank = []
 
 for foo in rab_url_bank:
@@ -27,7 +26,7 @@ for foo in rab_url_bank:
 
     for i in rab_bank:
         driver.get(i)
-        
+
         try:
             name = driver.title
             print(name)
@@ -37,14 +36,14 @@ for foo in rab_url_bank:
             print(name)
             rab["name"].append(name)
 
-        #try:
-            #description = driver.find_element(By.XPATH, "//div[@class='border border-bottom border-color-base m-b-2']").text
-            #print(description)
-            #rab["description"].append(description)
-        #except:
-            #description = "no description available"
-            #print(description)
-            #rab["description"].append(description)
+        try:
+            description = driver.find_element(By.XPATH, "//div[@class='border border-bottom border-color-base m-b-2']").text
+            print(description)
+            rab["description"].append(description)
+        except:
+            description = "no description available"
+            print(description)
+            rab["description"].append(description)
 
         try:
             image = driver.find_element(By.XPATH, "//div[@class='col-xs-3']/img").get_attribute('src')
